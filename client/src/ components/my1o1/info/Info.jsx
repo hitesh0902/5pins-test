@@ -8,7 +8,7 @@ import Avatar from "@material-ui/core/Avatar";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import ErrorIcon from "@material-ui/icons/Error";
 
-export default function LeftSide() {
+export default function Info() {
   return (
     <Container maxWidth="xs">
       <Paper style={{ padding: 16 }}>

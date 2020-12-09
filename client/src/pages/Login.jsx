@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 function Login(props) {
   const { user } = props;
 
-  if (user) return <Redirect to="/" />;
+  if (user) return <Redirect to="/home" />;
 
   return (
     <div>

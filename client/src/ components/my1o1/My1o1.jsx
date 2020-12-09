@@ -1,25 +1,25 @@
 import React from "react";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import LeftSide from "./LeftSide";
-import PendinActions from "./PendinActions";
-import Meeting from "./Meeting";
-import Feedback from "./Feedback";
-import ActiveGoals from "./ActiveGoals";
+import Info from "./info/Info";
+import PendinActions from "./pendingactions/PendinActions";
+import MeetingList from "./meetings/MeetingList";
+import Feedback from "./feedback/Feedback";
+import ActiveGoals from "./activegoals/ActiveGoals";
 
-export default function Dashboard() {
+export default function My101() {
   return (
     <Container maxWidth="xl">
       <Grid container>
         <Grid item xs={4}>
-          <LeftSide />
+          <Info />
         </Grid>
         <Grid item xs={4}>
           <Grid item>
             <PendinActions />
           </Grid>
           <Grid item style={{ marginTop: 40 }}>
-            <Meeting />
+            <MeetingList />
           </Grid>
         </Grid>
         <Grid item xs={4}>

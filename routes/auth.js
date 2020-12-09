@@ -2,7 +2,7 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 
-const CLIENT_HOME_PAGE_URL = "http://localhost:3000/";
+const CLIENT_HOME_PAGE_URL = "http://localhost:3000";
 
 // GET /auth/google
 router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
@@ -34,7 +34,7 @@ router.get("/login/success", (req, res) => {
 // GET /auth/logout
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect(CLIENT_HOME_PAGE_URL + "login");
+  res.redirect(CLIENT_HOME_PAGE_URL + "/login");
 });
 
 module.exports = router;

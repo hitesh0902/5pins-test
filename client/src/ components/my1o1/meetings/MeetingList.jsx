@@ -8,7 +8,14 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import EditIcon from "@material-ui/icons/Edit";
 import LoopIcon from "@material-ui/icons/Loop";
 
-export default function Meeting() {
+const meetings = [
+  { id: 1, date: "10 Dec 2020 at 11 AM", status: false },
+  { id: 2, date: "10 Dec 2020 at 11 AM", status: false },
+  { id: 3, date: "10 Dec 2020 at 11 AM", status: false },
+  { id: 4, date: "10 Dec 2020 at 11 AM", status: true },
+];
+
+export default function MeetingList() {
   return (
     <Container>
       <div style={{ padding: 16 }}>
@@ -25,6 +32,7 @@ export default function Meeting() {
               </ButtonGroup>
             </Grid>
           </Grid>
+
           <Grid item container>
             <Paper style={{ width: "100%", marginBottom: 10 }}>
               <Grid item container>
@@ -39,6 +47,7 @@ export default function Meeting() {
                 </Grid>
               </Grid>
             </Paper>
+
             <Paper style={{ width: "100%", marginBottom: 10 }}>
               <Grid item container>
                 <Grid item xs={10}>

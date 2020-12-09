@@ -13,6 +13,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
+import NavTabs from "./NavTabs";
 
 const useStyles = makeStyles((theme) => ({
   navLeft: {
@@ -43,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar(props) {
   const classes = useStyles();
 
-  const { user } = props;
+  // const { user } = props;
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -60,12 +61,14 @@ export default function Navbar(props) {
   return (
     <div>
       <AppBar position="static">
-        <Toolbar>
+        {/* <Toolbar> */}
+        <Box display="flex">
           <Box display="flex" alignItems="center" className={classes.navLeft}>
             <Typography variant="h4" color="secondary" className={classes.logo}>
               5pins
             </Typography>
-            <Box
+            <NavTabs />
+            {/* <Box
               display="flex"
               alignItems="center"
               justifyContent="space-around"
@@ -89,7 +92,7 @@ export default function Navbar(props) {
                 <BlockOutlinedIcon className={classes.itemSpace} />
                 <Typography variant="subtitle1">Insights</Typography>
               </Box>
-            </Box>
+            </Box> */}
           </Box>
           <Box
             display="flex"
@@ -108,7 +111,8 @@ export default function Navbar(props) {
                 >
                   <Box>
                     <Typography variant="subtitle2">
-                      {user.displayName}
+                      Name
+                      {/* {user.displayName} */}
                     </Typography>
                     <Typography variant="body2">Profession</Typography>
                   </Box>
@@ -130,7 +134,8 @@ export default function Navbar(props) {
               </Box>
             </Box>
           </Box>
-        </Toolbar>
+        </Box>
+        {/* </Toolbar> */}
       </AppBar>
       <Toolbar style={{ minHeight: 40 }} />
     </div>
