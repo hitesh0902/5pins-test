@@ -9,7 +9,7 @@ import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 
 export default function Feedback() {
   return (
-    <Container>
+    <Container maxWidth="xs">
       <Paper style={{ padding: 16 }}>
         <Grid container spacing={2}>
           <Grid item container>

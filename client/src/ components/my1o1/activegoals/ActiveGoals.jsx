@@ -10,7 +10,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 export default function ActiveGoals() {
   return (
-    <Container>
+    <Container maxWidth="xs">
       <Paper style={{ padding: 16 }}>
         <Grid container spacing={2}>
           <Grid item container justify="space-between">

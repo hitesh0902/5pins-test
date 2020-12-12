@@ -1,34 +1,25 @@
-import React from "react";
-import Box from "@material-ui/core/Box";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import ListAltOutlinedIcon from "@material-ui/icons/ListAltOutlined";
-import RateReviewOutlinedIcon from "@material-ui/icons/RateReviewOutlined";
-import BlockOutlinedIcon from "@material-ui/icons/BlockOutlined";
+import Box from "@material-ui/core/Box";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
-import PeopleIcon from "@material-ui/icons/People";
 import Avatar from "@material-ui/core/Avatar";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import Typography from "@material-ui/core/Typography";
+import { Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
-  navLeft: {
-    flexGrow: 1,
+  appbar: {
+    // minHeight: 54
   },
-  logo: {
-    fontWeight: 700,
-  },
-  leftItems: {
-    borderLeft: `1px solid ${theme.palette.border.main}`,
-    marginLeft: 20,
-    flexGrow: 0.15,
-  },
-  itemSpace: {
-    marginRight: 8,
+  logo: {},
+  tabs: {
+    minHeight: 62,
   },
   navRight: {
     flexGrow: 0.02,
@@ -44,7 +35,21 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar(props) {
   const classes = useStyles();
 
-  // const { user } = props;
+  //   const { match, history, user } = props;
+
+  const { page, history, user } = props;
+
+  const tabNameToIndex = {
+    0: "my1o1",
+    1: "myteam",
+  };
+
+  const indexToTabName = {
+    my1o1: 0,
+    myteam: 1,
+  };
+
+  const [selectedTab, setSelectedTab] = useState(indexToTabName[page]);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -56,51 +61,27 @@ export default function Navbar(props) {
     setAnchorEl(null);
   };
 
-  let manager = "yes";
+  //   if (!props.user) return <Redirect to="/login" />;
+
+  const handleChange = (event, newValue) => {
+    history.push(`/home/${tabNameToIndex[newValue]}`);
+    setSelectedTab(newValue);
+  };
 
   return (
     <div>
-      <AppBar position="static">
-        {/* <Toolbar> */}
-        <Box display="flex">
-          <Box display="flex" alignItems="center" className={classes.navLeft}>
+      <AppBar position="static" className={classes.appbar}>
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Box display="flex" alignItems="center">
             <Typography variant="h4" color="secondary" className={classes.logo}>
               5pins
             </Typography>
-            {/* <NavTabs /> */}
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-around"
-              className={classes.leftItems}
-            >
-              <Box display="flex" alignItems="center">
-                <ListAltOutlinedIcon className={classes.itemSpace} />
-                <NavLink to="/">
-                  <Typography variant="subtitle1">My 1.1s</Typography>
-                </NavLink>
-              </Box>
-              {manager && (
-                <Box display="flex" alignItems="center">
-                  <PeopleIcon className={classes.itemSpace} />
-                  <NavLink to="/myteam">
-                    <Typography variant="subtitle1">My Team</Typography>
-                  </NavLink>
-                </Box>
-              )}
-              <Box display="flex" alignItems="center">
-                <RateReviewOutlinedIcon className={classes.itemSpace} />
-                <NavLink to="/reviews">
-                  <Typography variant="subtitle1">Reviews</Typography>
-                </NavLink>
-              </Box>
-              <Box display="flex" alignItems="center">
-                <BlockOutlinedIcon className={classes.itemSpace} />
-                <NavLink to="/insights">
-                  <Typography variant="subtitle1">Insights</Typography>
-                </NavLink>
-              </Box>
-            </Box>
+            <Tabs value={selectedTab} onChange={handleChange}>
+              <Tab label="My 1:1s" className={classes.tabs} />
+              <Tab label="My Team" className={classes.tabs} />
+              <Tab label="Reviews" className={classes.tabs} />
+              <Tab label="Insights" className={classes.tabs} />
+            </Tabs>
           </Box>
           <Box
             display="flex"
@@ -119,7 +100,6 @@ export default function Navbar(props) {
                 >
                   <Box>
                     <Typography variant="subtitle2">
-                      Name
                       {/* {user.displayName} */}
                     </Typography>
                     <Typography variant="body2">Profession</Typography>
@@ -143,7 +123,6 @@ export default function Navbar(props) {
             </Box>
           </Box>
         </Box>
-        {/* </Toolbar> */}
       </AppBar>
       <Toolbar style={{ minHeight: 40 }} />
     </div>
