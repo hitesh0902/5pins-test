@@ -1,10 +1,13 @@
-export function OpenModal() {
+export function openModal(tabValue = 0) {
   return {
     type: "OPEN_MODAL",
+    payload: {
+      tabValue,
+    },
   };
 }
 
-export function CloseModal() {
+export function closeModal() {
   return {
     type: "CLOSE_MODAL",
   };

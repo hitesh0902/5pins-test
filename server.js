@@ -25,7 +25,8 @@ if (process.env.NODE_ENV === "development") {
 // Middlewares
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+// app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors()); // api testing
 
 // Sessions
 app.use(
@@ -60,3 +61,4 @@ mongoose
 
 // Routes
 app.use("/auth", require("./routes/auth"));
+app.use("/api/meetings", require("./routes/meeting"));

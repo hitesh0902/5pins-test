@@ -5,8 +5,11 @@ import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
+import { connect } from "react-redux";
+import { openModal } from "../../../../actions/modalAction";
 
-export default function Notes() {
+function Notes(props) {
+  const { open } = props;
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -27,10 +30,18 @@ export default function Notes() {
         </Grid>
       </Grid>
       <Grid item container>
-        <Button variant="text" color="secondary">
+        <Button variant="text" color="secondary" onClick={() => open(2)}>
           Add More
         </Button>
       </Grid>
     </Grid>
   );
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    open: (value) => dispatch(openModal(value)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Notes);

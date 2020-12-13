@@ -1,13 +1,14 @@
 const initialState = {
   isOpen: false,
+  tabValue: 0,
 };
 
 function ModalReducer(state = initialState, action) {
   switch (action.type) {
     case "OPEN_MODAL":
-      return { isOpen: true };
+      return { ...state, isOpen: true, tabValue: action.payload.tabValue };
     case "CLOSE_MODAL":
-      return { isOpen: false };
+      return { ...state, isOpen: false };
     default:
       return state;
   }

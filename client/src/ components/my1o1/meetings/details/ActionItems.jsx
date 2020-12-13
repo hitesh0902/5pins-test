@@ -6,10 +6,10 @@ import Avatar from "@material-ui/core/Avatar";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { connect } from "react-redux";
+import { openModal } from "../../../../actions/modalAction";
 
 function ActionItems(props) {
   const { open } = props;
-  console.log(props);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -32,7 +32,7 @@ function ActionItems(props) {
       </Grid>
 
       <Grid item xs={12}>
-        <Button variant="text" color="secondary" onClick={() => open()}>
+        <Button variant="text" color="secondary" onClick={() => open(1)}>
           Add More
         </Button>
       </Grid>
@@ -42,7 +42,7 @@ function ActionItems(props) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    open: () => dispatch({ type: "OPEN_MODAL" }),
+    open: (value) => dispatch(openModal(value)),
   };
 };
 

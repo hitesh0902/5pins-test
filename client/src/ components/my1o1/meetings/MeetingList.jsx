@@ -7,7 +7,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { Link as RouterLink } from "react-router-dom";
 import MeetingSummary from "./MeetingSummary";
 
-export default function MeetingList(props) {
+function MeetingList(props) {
   const { meetings } = props;
 
   const [current, setCurrent] = useState(true);
@@ -41,11 +41,11 @@ export default function MeetingList(props) {
             {current &&
               meetings.map((meeting) => (
                 <Paper
+                  key={meeting.id}
                   style={{
                     width: "100%",
                     marginBottom: 10,
                     cursor: "pointer",
-                    // key={meeting.id}
                   }}
                 >
                   <RouterLink to={`/meeting/${meeting.id}`}>
@@ -59,3 +59,5 @@ export default function MeetingList(props) {
     </Container>
   );
 }
+
+export default MeetingList;

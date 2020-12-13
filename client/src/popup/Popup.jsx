@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 function Popup(props) {
   const classes = useStyles();
 
-  const { isOpen, close, id } = props;
+  const { isOpen, close, id, tabValue } = props;
 
   return (
     <div>
@@ -43,8 +43,12 @@ function Popup(props) {
         }}
       >
         <Fade in={isOpen}>
-          <Container maxWidth="sm" style={{ outline: 0 }}>
-            <PopupForm id={id} close={close} />
+          <Container
+            maxWidth="sm"
+            style={{ outline: 0 }}
+            className={classes.paper}
+          >
+            <PopupForm id={id} close={close} tabValue={tabValue} />
           </Container>
         </Fade>
       </Modal>
@@ -55,7 +59,14 @@ function Popup(props) {
 const mapStateToProps = (state) => {
   return {
     isOpen: state.modal.isOpen,
+    tabValue: state.modal.tabValue,
   };
 };
 
-export default connect(mapStateToProps)(Popup);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    close: () => dispatch({ type: "CLOSE_MODAL" }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Popup);

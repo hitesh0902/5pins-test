@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const pendingActionItemsSchema = new Schema({
+const actionItemsSchema = new Schema({
   _id: Schema.Types.ObjectId,
   title: String,
+  completed: Boolean,
 });
 
 const talkingPointsSchema = new Schema({
@@ -17,7 +18,7 @@ const notesSchema = new Schema({
 });
 
 const meetingDetailSchema = new Schema({
-  pendingAction: [pendingActionItemsSchema],
+  actionItems: [actionItemsSchema],
   talkingPoints: [talkingPointsSchema],
   notes: [notesSchema],
 });
