@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -31,14 +30,6 @@ export default function PopupForm(props) {
       {currentTab === 0 && <TalkingPointsForm />}
       {currentTab === 1 && <ActionItemsForm />}
       {currentTab === 2 && <NotesForm />}
-      <Box display="flex" justifyContent="flex-end">
-        <Button variant="contained" color="secondary">
-          Cancel
-        </Button>
-        <Button variant="contained" color="secondary">
-          Save
-        </Button>
-      </Box>
     </div>
   );
 }
@@ -50,7 +41,7 @@ function TalkingPointsForm() {
         <Grid item xs={10}>
           <TextField
             label="Enter Point Here"
-            variant="standard"
+            variant="outlined"
             fullWidth="true"
           />
         </Grid>
@@ -65,6 +56,18 @@ function TalkingPointsForm() {
             Add More Points
           </Button>
         </Grid>
+        <Grid item container justify="flex-end">
+          <Grid item>
+            <Button variant="contained" color="secondary">
+              Cancel
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button variant="contained" color="secondary">
+              Save
+            </Button>
+          </Grid>
+        </Grid>
       </Grid>
     </div>
   );
@@ -76,7 +79,7 @@ function ActionItemsForm() {
         <Grid item xs={10}>
           <TextField
             label="Enter Action Here"
-            variant="standard"
+            variant="outlined"
             fullWidth="true"
           />
         </Grid>
@@ -91,6 +94,18 @@ function ActionItemsForm() {
             Add More Actions
           </Button>
         </Grid>
+        <Grid item container justify="flex-end">
+          <Grid item>
+            <Button variant="contained" color="secondary">
+              Cancel
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button variant="contained" color="secondary">
+              Save
+            </Button>
+          </Grid>
+        </Grid>
       </Grid>
     </div>
   );
@@ -102,9 +117,23 @@ function NotesForm() {
         <Grid item xs={12}>
           <TextField
             label="Add Notes Here"
-            variant="standard"
+            variant="outlined"
             fullWidth="true"
+            multiline="true"
+            rows={3}
           />
+          <Grid item container justify="flex-end" style={{ marginTop: 20 }}>
+            <Grid item>
+              <Button variant="contained" color="secondary">
+                Cancel
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button variant="contained" color="secondary">
+                Save
+              </Button>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </div>

@@ -6,29 +6,34 @@ import Avatar from "@material-ui/core/Avatar";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { connect } from "react-redux";
-import { openModal } from "../../../../actions/modalAction";
+import { openModalAction } from "../../../../actions/modalAction";
 
 function ActionItems(props) {
-  const { open } = props;
+  const { open, actions } = props;
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Typography variant="body1">Action Items</Typography>
       </Grid>
 
-      <Grid item container>
-        <Grid item xs={2}>
-          <Avatar />
-        </Grid>
-        <Grid item xs={8}>
-          <Typography variant="body1">
-            Name - Identify the data science course you would like do
-          </Typography>
-        </Grid>
-        <Grid item xs={2}>
-          <EditIcon />
-          <DeleteIcon />
-        </Grid>
+      <Grid item container alignItems="center">
+        {actions.map((action) => (
+          <React.Fragment key={action._id}>
+            <Grid item xs={2}>
+              <Avatar />
+            </Grid>
+            <Grid item xs={8}>
+              <Typography variant="body1">
+                {`Name - ${action.title}`}
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <EditIcon />
+              <DeleteIcon />
+            </Grid>
+          </React.Fragment>
+        ))}
       </Grid>
 
       <Grid item xs={12}>
@@ -42,7 +47,7 @@ function ActionItems(props) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    open: (value) => dispatch(openModal(value)),
+    open: (value) => dispatch(openModalAction(value)),
   };
 };
 

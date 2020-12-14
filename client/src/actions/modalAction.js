@@ -1,4 +1,4 @@
-export function openModal(tabValue = 0) {
+export function openModalAction(tabValue = 0) {
   return {
     type: "OPEN_MODAL",
     payload: {
@@ -7,7 +7,7 @@ export function openModal(tabValue = 0) {
   };
 }
 
-export function closeModal() {
+export function closeModalAction() {
   return {
     type: "CLOSE_MODAL",
   };

@@ -6,6 +6,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import PopupForm from "./PopupForm";
 import { connect } from "react-redux";
+import { closeModalAction } from "../actions/modalAction";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -65,7 +66,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    close: () => dispatch({ type: "CLOSE_MODAL" }),
+    close: () => dispatch(closeModalAction()),
   };
 };
 

@@ -6,29 +6,34 @@ import Avatar from "@material-ui/core/Avatar";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { connect } from "react-redux";
-import { openModal } from "../../../../actions/modalAction";
+import { openModalAction } from "../../../../actions/modalAction";
 
 function TalkingPoints(props) {
-  const { open } = props;
+  const { open, points } = props;
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Typography variant="body1">Talking Points</Typography>
       </Grid>
-      <Grid item container>
-        <Grid item xs={2}>
-          <Avatar />
-        </Grid>
-        <Grid item xs={8}>
-          <Typography variant="body1">
-            Name - Identify the data science course you would like do
-          </Typography>
-        </Grid>
-        <Grid item xs={2}>
-          <EditIcon />
-          <DeleteIcon />
-        </Grid>
+
+      <Grid item container alignItems="center">
+        {points.map((point) => (
+          <React.Fragment key={point._id}>
+            <Grid item xs={2}>
+              <Avatar />
+            </Grid>
+            <Grid item xs={8}>
+              <Typography variant="body1">{`Name - ${point.title}`}</Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <EditIcon />
+              <DeleteIcon />
+            </Grid>
+          </React.Fragment>
+        ))}
       </Grid>
+
       <Grid item container justify="space-between">
         <Grid item>
           <Button variant="text" color="secondary" onClick={() => open(0)}>
@@ -42,7 +47,7 @@ function TalkingPoints(props) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    open: (value) => dispatch(openModal(value)),
+    open: (value) => dispatch(openModalAction(value)),
   };
 };
 

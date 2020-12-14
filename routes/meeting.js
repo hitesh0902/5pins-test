@@ -1,11 +1,18 @@
 const express = require("express");
 const router = express.Router();
+const mongoose = express("mongoose");
 const Meeting = require("../models/meeting");
 
 // GET api/meetings/
 router.get("/", (req, res) => {
-  const meeting = Meeting.find();
-  console.log(meeting);
+  Meeting.find()
+    .populate()
+    .exec((err, data) => {
+      res.send(data);
+      console.log(data);
+    });
+  // res.json({ meeting });
+  // console.log(meeting);
 });
 
 // GET api/meeting/id
@@ -16,10 +23,17 @@ router.get("/:id", (req, res) => {
 
 // POST
 router.post("/", (req, res) => {
+  console.log(req.body);
   const data = req.body;
-  const meeting = new Meeting(data);
-  // meeting.save();
-  console.log(data);
+  const meeting = new Meeting({
+    ...data,
+  });
+  meeting
+    .save()
+    .then(() => console.log("saved meeting to db"))
+    .then(() => res.send(200).json({ message: "saved  to db" }))
+    .catch((err) => console.log(err));
+  // console.log(meeting);
 });
 
 // Update

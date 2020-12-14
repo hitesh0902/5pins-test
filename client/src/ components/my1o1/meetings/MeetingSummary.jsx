@@ -5,7 +5,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import LoopIcon from "@material-ui/icons/Loop";
 
 export default function MeetingSummary(props) {
-  const { date } = props.meeting;
+  const { date } = props;
 
   return (
     <Grid item container>

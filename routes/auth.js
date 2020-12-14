@@ -18,7 +18,7 @@ router.get(
 
 // GET auth/login/success
 router.get("/login/success", (req, res) => {
-  console.log(req.user);
+  // console.log(req.user);
   if (req.user) {
     res.json({
       message: "User Authenticated",

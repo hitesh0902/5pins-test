@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { Link as RouterLink } from "react-router-dom";
 import MeetingSummary from "./MeetingSummary";
+import { connect } from "react-redux";
 
 function MeetingList(props) {
   const { meetings } = props;
@@ -41,15 +42,15 @@ function MeetingList(props) {
             {current &&
               meetings.map((meeting) => (
                 <Paper
-                  key={meeting.id}
+                  key={meeting._id}
                   style={{
                     width: "100%",
                     marginBottom: 10,
                     cursor: "pointer",
                   }}
                 >
-                  <RouterLink to={`/meeting/${meeting.id}`}>
-                    <MeetingSummary meeting={meeting} />
+                  <RouterLink to={`/meeting/${meeting._id}`}>
+                    <MeetingSummary date={meeting.createdAt} />
                   </RouterLink>
                 </Paper>
               ))}
@@ -60,4 +61,10 @@ function MeetingList(props) {
   );
 }
 
-export default MeetingList;
+const mapStateToProps = (state) => {
+  return {
+    meetings: state.meetings,
+  };
+};
+
+export default connect(mapStateToProps)(MeetingList);
