@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "../ components/navbar/Navbar";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -9,14 +9,13 @@ import Feedback from "../ components/my1o1/feedback/Feedback";
 import ActiveGoals from "../ components/my1o1/activegoals/ActiveGoals";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { getMeetingsAction } from "../actions/meetingAction";
 
 function Home(props) {
   const { getMeetings } = props;
 
-  useEffect(() => {
-    getMeetings();
-  }, [getMeetings]);
+  // useEffect(() => {
+  //   getMeetings();
+  // }, [getMeetings]);
 
   if (!props.user) return <Redirect to="/login" />;
 

@@ -6,6 +6,7 @@ import Info from "../ components/my1o1/info/Info";
 import Feedback from "../ components/my1o1/feedback/Feedback";
 import ActiveGoals from "../ components/my1o1/activegoals/ActiveGoals";
 import MeetingDetails from "../ components/my1o1/meetings/MeetingDetails";
+import Popup from "../popup/Popup";
 
 function My1o1Details(props) {
   const id = props.match.params.id;
@@ -32,6 +33,7 @@ function My1o1Details(props) {
           </Grid>
         </Grid>
       </Container>
+      <Popup id={id} />
     </div>
   );
 }

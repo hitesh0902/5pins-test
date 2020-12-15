@@ -53,7 +53,11 @@ app.use(passport.session());
 const dbURI = process.env.MONGO_URI;
 
 mongoose
-  .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(dbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
   .then(() =>
     app.listen(port, () => console.log("Server runnning on port " + port))
   )

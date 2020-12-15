@@ -10,11 +10,9 @@ import Notes from "./details/Notes";
 import { connect } from "react-redux";
 
 function MeetingDetails(props) {
-  const {
-    details: { actionItems, notes, talkingPoints },
-  } = props;
+  const { actionItems, notes, talkingPoints } = props.meeting;
 
-  // console.log(details);
+  // console.log(props.meeting);
 
   return (
     <Container>
@@ -27,15 +25,19 @@ function MeetingDetails(props) {
               </Button>
             </RouterLink>
           </Grid>
-          <Grid item xs={12}>
-            <ActionItems actions={actionItems} />
-          </Grid>
-          <Grid item xs={12}>
-            <TalkingPoints points={talkingPoints} />
-          </Grid>
-          <Grid item xs={12}>
-            <Notes notes={notes} />
-          </Grid>
+          {props.meeting && (
+            <React.Fragment>
+              <Grid item xs={12}>
+                {actionItems && <ActionItems actions={actionItems} />}
+              </Grid>
+              <Grid item xs={12}>
+                {talkingPoints && <TalkingPoints points={talkingPoints} />}
+              </Grid>
+              <Grid item xs={12}>
+                {notes && <Notes notes={notes} />}
+              </Grid>
+            </React.Fragment>
+          )}
         </Grid>
       </Paper>
     </Container>
@@ -45,9 +47,10 @@ function MeetingDetails(props) {
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.id;
   const meeting = state.meetings.find((meeting) => meeting._id === id);
+
   return {
     currentUser: state.auth.user,
-    details: meeting.details,
+    meeting,
   };
 };
 

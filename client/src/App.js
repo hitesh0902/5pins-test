@@ -7,14 +7,16 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import MyTeam from "./pages/MyTeam";
 import My1o1Details from "./pages/My1o1Details";
-import Popup from "./popup/Popup";
+// import Popup from "./popup/Popup";
+import { getMeetingsAction } from "./actions/meetingAction";
 
 function App(props) {
-  const { getUser } = props;
+  const { getUser, getMeetings } = props;
 
   useEffect(() => {
     getUser();
-  }, [getUser]);
+    getMeetings();
+  }, [getUser, getMeetings]);
 
   return (
     <BrowserRouter>
@@ -27,7 +29,7 @@ function App(props) {
           <Route exact path="/login" component={Login} />
           <Route path="/" render={() => <h1>Error 404</h1>} />
         </Switch>
-        <Popup />
+        {/* <Popup /> */}
       </div>
     </BrowserRouter>
   );
@@ -36,6 +38,7 @@ function App(props) {
 const mapDispatchToProps = (dispatch) => {
   return {
     getUser: () => dispatch(fetchUserAction()),
+    getMeetings: () => dispatch(getMeetingsAction()),
   };
 };
 

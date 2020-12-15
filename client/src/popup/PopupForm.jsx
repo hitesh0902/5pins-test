@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
-export default function PopupForm(props) {
+function PopupForm(props) {
   const { tabValue } = props;
 
   const [currentTab, setCurrentTab] = useState(tabValue);
@@ -34,6 +34,8 @@ export default function PopupForm(props) {
   );
 }
 
+export default PopupForm;
+
 function TalkingPointsForm() {
   return (
     <div>
@@ -42,7 +44,7 @@ function TalkingPointsForm() {
           <TextField
             label="Enter Point Here"
             variant="outlined"
-            fullWidth="true"
+            fullWidth={true}
           />
         </Grid>
         <Grid item xs={1}>
@@ -72,6 +74,7 @@ function TalkingPointsForm() {
     </div>
   );
 }
+
 function ActionItemsForm() {
   return (
     <div>
@@ -80,7 +83,7 @@ function ActionItemsForm() {
           <TextField
             label="Enter Action Here"
             variant="outlined"
-            fullWidth="true"
+            fullWidth={true}
           />
         </Grid>
         <Grid item xs={1}>
@@ -110,6 +113,7 @@ function ActionItemsForm() {
     </div>
   );
 }
+
 function NotesForm() {
   return (
     <div>
@@ -118,7 +122,7 @@ function NotesForm() {
           <TextField
             label="Add Notes Here"
             variant="outlined"
-            fullWidth="true"
+            fullWidth={true}
             multiline="true"
             rows={3}
           />
