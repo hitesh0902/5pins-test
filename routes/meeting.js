@@ -4,23 +4,32 @@ const mongoose = require("mongoose");
 const Meeting = require("../models/meeting");
 
 // GET api/meetings/
-router.get("/", (req, res) => {
-  Meeting.find().exec((err, data) => {
+router.get("/", async (req, res) => {
+  try {
+    const data = await Meeting.find();
     res.send(data);
-  });
+  } catch (err) {
+    res.sendStatus(500);
+    console.log(err);
+  }
 });
 
 // GET api/meeting/id
 router.get("/:_id", async (req, res) => {
-  const _id = req.params._id;
-  const meeting = await Meeting.findOne({ _id });
-  res.json(meeting);
+  try {
+    const _id = req.params._id;
+    const meeting = await Meeting.findById(_id);
+    console.log(meeting);
+    res.json(meeting);
+  } catch (err) {
+    res.sendStatus(500);
+    console.log(err);
+  }
 });
 
 // POST
 router.post("/", async (req, res) => {
   try {
-    // console.log(req.body);
     const data = req.body;
     const meeting = new Meeting(data);
     await meeting.save();
@@ -99,6 +108,54 @@ router.post("/:_id/:data", async (req, res) => {
             notes: {
               user,
               title: req.body.title,
+            },
+          },
+        }
+      );
+    }
+    res.sendStatus(200);
+  } catch (err) {
+    res.sendStatus(500);
+    console.log(err);
+  }
+});
+
+router.delete("/:_id/:data/:dataId", async (req, res) => {
+  try {
+    const _id = req.params._id;
+    const data = req.params.data;
+    const dataId = req.params.dataId;
+    // const user = mongoose.Types.ObjectId(req.body.user);
+
+    if (data === "action_item") {
+      await Meeting.findByIdAndUpdate(
+        { _id },
+        {
+          $pull: {
+            actionItems: {
+              _id: dataId,
+            },
+          },
+        }
+      );
+    } else if (data === "talking_point") {
+      await Meeting.findByIdAndUpdate(
+        { _id },
+        {
+          $pull: {
+            talkingPoints: {
+              _id: dataId,
+            },
+          },
+        }
+      );
+    } else if (data === "note") {
+      await Meeting.findByIdAndUpdate(
+        { _id },
+        {
+          $pull: {
+            notes: {
+              _id: dataId,
             },
           },
         }

@@ -12,15 +12,19 @@ export default function Info() {
   return (
     <Container maxWidth="xs">
       <Paper style={{ padding: 16 }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={4}>
           <Grid item xs={12}>
             <Typography variant="body1">My Manager</Typography>
           </Grid>
-          <Grid item container justify="center">
-            <Grid item xs={2}>
-              <Avatar alt="Profile Picture" src="/static/images/avatar/1.jpg" />
+          <Grid item container justify="center" alignItems="center">
+            <Grid item xs={4}>
+              <Avatar
+                alt="Profile Picture"
+                src="/static/images/avatar/1.jpg"
+                style={{ width: 60, height: 60 }}
+              />
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={4}>
               <Typography variant="body1">Name</Typography>
               <Typography variant="body1">Job title</Typography>
             </Grid>
@@ -28,7 +32,7 @@ export default function Info() {
           <Grid item xs={12}>
             <Typography variant="body1">Last Meeting</Typography>
           </Grid>
-          <Grid item container>
+          <Grid item container spacing={4}>
             <Grid item container>
               <Grid item xs={2}>
                 <CheckCircleIcon />
@@ -51,8 +55,8 @@ export default function Info() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12}>
-            <img src="/img/meet" alt="meet" />
+          <Grid item container justify="center">
+            <img src="/image/Layer2.svg" alt="meet" style={{ width: "75%" }} />
           </Grid>
           <Grid item container justify="center">
             <Button variant="contained" color="secondary">

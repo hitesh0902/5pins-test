@@ -11,7 +11,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 function Home(props) {
-  const { getMeetings } = props;
+  // const { getMeetings } = props;
 
   // useEffect(() => {
   //   getMeetings();
@@ -59,7 +59,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getMeetings: () => dispatch(getMeetingsAction()),
+    //     getMeetings: () => dispatch(getMeetingsAction()),
   };
 };
 

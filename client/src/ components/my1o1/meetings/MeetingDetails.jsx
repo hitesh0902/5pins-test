@@ -10,9 +10,12 @@ import Notes from "./details/Notes";
 import { connect } from "react-redux";
 
 function MeetingDetails(props) {
-  const { actionItems, notes, talkingPoints } = props.meeting;
+  let data = {};
 
-  // console.log(props.meeting);
+  if (props.meeting) {
+    const { actionItems, notes, talkingPoints } = props.meeting;
+    data = { actionItems, notes, talkingPoints };
+  }
 
   return (
     <Container>
@@ -25,16 +28,28 @@ function MeetingDetails(props) {
               </Button>
             </RouterLink>
           </Grid>
-          {props.meeting && (
+          {data && (
             <React.Fragment>
               <Grid item xs={12}>
-                {actionItems && <ActionItems actions={actionItems} />}
+                {data.actionItems && (
+                  <ActionItems
+                    actions={data.actionItems}
+                    meetingId={props.id}
+                  />
+                )}
               </Grid>
               <Grid item xs={12}>
-                {talkingPoints && <TalkingPoints points={talkingPoints} />}
+                {data.talkingPoints && (
+                  <TalkingPoints
+                    points={data.talkingPoints}
+                    meetingId={props.id}
+                  />
+                )}
               </Grid>
               <Grid item xs={12}>
-                {notes && <Notes notes={notes} />}
+                {data.notes && (
+                  <Notes notes={data.notes} meetingId={props.id} />
+                )}
               </Grid>
             </React.Fragment>
           )}

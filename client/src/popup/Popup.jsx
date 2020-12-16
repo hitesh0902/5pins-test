@@ -1,9 +1,9 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import { makeStyles } from "@material-ui/core/styles";
 import PopupForm from "./PopupForm";
 import { connect } from "react-redux";
 import { closeModalAction } from "../actions/modalAction";
@@ -26,8 +26,6 @@ function Popup(props) {
   const classes = useStyles();
 
   const { isOpen, close, id, tabValue } = props;
-
-  console.log(id);
 
   return (
     <div>

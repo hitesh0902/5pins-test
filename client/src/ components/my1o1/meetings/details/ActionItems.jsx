@@ -5,11 +5,13 @@ import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
+import IconButton from "@material-ui/core/IconButton";
 import { connect } from "react-redux";
 import { openModalAction } from "../../../../actions/modalAction";
+import { deleteActionItem } from "../../../../actions/meetingAction";
 
 function ActionItems(props) {
-  const { open, actions } = props;
+  const { actions, open, deleteItem, meetingId } = props;
 
   return (
     <Grid container spacing={2}>
@@ -29,8 +31,14 @@ function ActionItems(props) {
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <EditIcon />
-              <DeleteIcon />
+              <IconButton>
+                <EditIcon />
+              </IconButton>
+              <IconButton
+                onClick={() => deleteItem({ meetingId, dataId: action._id })}
+              >
+                <DeleteIcon />
+              </IconButton>
             </Grid>
           </React.Fragment>
         ))}
@@ -48,6 +56,7 @@ function ActionItems(props) {
 const mapDispatchToProps = (dispatch) => {
   return {
     open: (value) => dispatch(openModalAction(value)),
+    deleteItem: (data) => dispatch(deleteActionItem(data)),
   };
 };
 
