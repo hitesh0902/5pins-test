@@ -67,8 +67,7 @@ router.delete("/:_id", async (req, res) => {
   }
 });
 
-// POST api/meetings/id/data
-//  data = action_item | talking_point | note
+// POST api/meetings/id/data where data = action_item | talking_point | note
 router.post("/:_id/:data", async (req, res) => {
   try {
     const _id = req.params._id;
@@ -120,6 +119,7 @@ router.post("/:_id/:data", async (req, res) => {
   }
 });
 
+// DELETE api/meetings/id/data where data = action_item | talking_point | note
 router.delete("/:_id/:data/:dataId", async (req, res) => {
   try {
     const _id = req.params._id;

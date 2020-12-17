@@ -4,9 +4,10 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { addNotes } from "../../actions/meetingAction";
+import { closeModalAction } from "../../actions/modalAction";
 
 function NotesForm(props) {
-  const { id, addNote, currentUserId } = props;
+  const { id, addNote, currentUserId, close } = props;
 
   const [note, setNote] = useState("");
 
@@ -33,12 +34,17 @@ function NotesForm(props) {
           />
           <Grid item container justify="flex-end" style={{ marginTop: 20 }}>
             <Grid item>
-              <Button variant="contained" color="secondary">
+              <Button variant="contained" color="secondary" onClick={close}>
                 Cancel
               </Button>
             </Grid>
             <Grid item>
-              <Button variant="contained" color="secondary" type="submit">
+              <Button
+                variant="contained"
+                color="secondary"
+                type="submit"
+                style={{ marginLeft: 10 }}
+              >
                 Save
               </Button>
             </Grid>
@@ -58,6 +64,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addNote: (data) => dispatch(addNotes(data)),
+    close: () => dispatch(closeModalAction()),
   };
 };
 

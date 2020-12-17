@@ -120,7 +120,7 @@ function Navbar(props) {
                 >
                   <Box>
                     <Typography variant="subtitle2">
-                      {user && user.displayName}
+                      {user ? user.displayName : "Name"}
                     </Typography>
                     <Typography variant="body2">Profession</Typography>
                   </Box>

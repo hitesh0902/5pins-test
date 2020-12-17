@@ -10,9 +10,7 @@ export default function PendingActionSummary(props) {
   return (
     <React.Fragment>
       <Grid item xs={2}>
-        <Iconbutton>
-          <Checkbox />
-        </Iconbutton>
+        <Checkbox />
       </Grid>
       <Grid item xs={9}>
         <Typography variant="body1">{item.body}</Typography>

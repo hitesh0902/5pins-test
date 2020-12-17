@@ -6,9 +6,10 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { addActionItems } from "../../actions/meetingAction";
 import { connect } from "react-redux";
+import { closeModalAction } from "../../actions/modalAction";
 
 function ActionItemsForm(props) {
-  const { id, addAction, currentUserId } = props;
+  const { id, addAction, currentUserId, close } = props;
 
   const [action, setAction] = useState("");
 
@@ -45,12 +46,17 @@ function ActionItemsForm(props) {
         </Grid>
         <Grid item container justify="flex-end">
           <Grid item>
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="secondary" onClick={close}>
               Cancel
             </Button>
           </Grid>
           <Grid item>
-            <Button variant="contained" color="secondary" type="submit">
+            <Button
+              variant="contained"
+              color="secondary"
+              type="submit"
+              style={{ marginLeft: 10 }}
+            >
               Save
             </Button>
           </Grid>
@@ -69,6 +75,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addAction: (data) => dispatch(addActionItems(data)),
+    close: () => dispatch(closeModalAction()),
   };
 };
 

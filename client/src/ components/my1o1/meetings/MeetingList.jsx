@@ -4,7 +4,6 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
-import { Link as RouterLink } from "react-router-dom";
 import MeetingSummary from "./MeetingSummary";
 import { connect } from "react-redux";
 
@@ -37,7 +36,6 @@ function MeetingList(props) {
               </ButtonGroup>
             </Grid>
           </Grid>
-
           <Grid item container>
             {current &&
               meetings.map((meeting) => (
@@ -49,9 +47,7 @@ function MeetingList(props) {
                     cursor: "pointer",
                   }}
                 >
-                  <RouterLink to={`/meeting/${meeting._id}`}>
-                    <MeetingSummary date={meeting.createdAt} />
-                  </RouterLink>
+                  <MeetingSummary date={meeting.createdAt} id={meeting._id} />
                 </Paper>
               ))}
           </Grid>

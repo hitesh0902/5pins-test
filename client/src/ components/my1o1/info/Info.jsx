@@ -12,9 +12,9 @@ export default function Info() {
   return (
     <Container maxWidth="xs">
       <Paper style={{ padding: 16 }}>
-        <Grid container spacing={4}>
+        <Grid container spacing={5}>
           <Grid item xs={12}>
-            <Typography variant="body1">My Manager</Typography>
+            <Typography variant="h6">My Manager</Typography>
           </Grid>
           <Grid item container justify="center" alignItems="center">
             <Grid item xs={4}>
@@ -25,12 +25,14 @@ export default function Info() {
               />
             </Grid>
             <Grid item xs={4}>
-              <Typography variant="body1">Name</Typography>
+              <Typography variant="body1" gutterBottom>
+                Name
+              </Typography>
               <Typography variant="body1">Job title</Typography>
             </Grid>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="body1">Last Meeting</Typography>
+            <Typography variant="h6">Last Meeting</Typography>
           </Grid>
           <Grid item container spacing={4}>
             <Grid item container>

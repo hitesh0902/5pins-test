@@ -20,10 +20,6 @@ const pendingItems = [
     id: 3,
     body: "what would like to do next.",
   },
-  {
-    id: 4,
-    body: "Do something interesting .",
-  },
 ];
 
 export default function PendinActionList() {
@@ -65,12 +61,10 @@ export default function PendinActionList() {
                 </Grid>
               ))}
           </Grid>
-          <Grid item container>
-            <Grid item>
-              <Button variant="outlined" color="secondary">
-                Completed
-              </Button>
-            </Grid>
+          <Grid item container justify="flex-end">
+            <Button variant="outlined" color="secondary">
+              Completed
+            </Button>
           </Grid>
         </Grid>
       </Paper>

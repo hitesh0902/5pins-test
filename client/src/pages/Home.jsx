@@ -32,7 +32,7 @@ function Home(props) {
             <Grid item>
               <PendingActionList />
             </Grid>
-            <Grid item style={{ marginTop: 40 }}>
+            <Grid item style={{ marginTop: 10 }}>
               <MeetingList />
             </Grid>
           </Grid>
@@ -41,7 +41,7 @@ function Home(props) {
             <Grid item>
               <Feedback />
             </Grid>
-            <Grid item style={{ marginTop: 40 }}>
+            <Grid item style={{ marginTop: 30 }}>
               <ActiveGoals />
             </Grid>
           </Grid>
